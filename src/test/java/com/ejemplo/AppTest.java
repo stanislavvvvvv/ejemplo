@@ -73,4 +73,15 @@ public class AppTest
     	
     	assertTrue(coche instanceof Coche);
     }
+    public void testCochesIguales() {
+    	Coche coche = new Economico();
+    	coche.setCaballos(150);
+    	coche.setPuertas(3);
+    	coche.setTraccion("delantera");
+    	Coche coche2 = new Economico();
+    	coche2.setCaballos(150);
+    	coche2.setPuertas(3);
+    	coche2.setTraccion("delantera");
+    	assertThat(coche).isEqualTo(coche2);
+    }
 }
