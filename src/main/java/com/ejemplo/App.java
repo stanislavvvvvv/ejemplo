@@ -36,5 +36,8 @@ public class App
     	
     	coches.addAll(Arrays.asList(mini,suv,largo));
     	System.out.println("coches");
+    	System.out.println("coches");
+    	System.out.println("coches");
+    	System.out.println("coches");
     }
 }
