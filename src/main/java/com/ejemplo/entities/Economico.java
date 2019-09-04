@@ -1,14 +1,8 @@
 package com.ejemplo.entities;
 
-public class Economico extends Coche{
+import lombok.Data;
 
-	public Economico() {
-		// TODO Auto-generated constructor stub
-	}
-	public Economico(Integer caballos, Integer puertas, String traccion) {
-		super(caballos, puertas, traccion);
-		// TODO Auto-generated constructor stub
-	}
+public @Data class Economico extends Coche{
 
 	@Override
 	public void movimiento() {
