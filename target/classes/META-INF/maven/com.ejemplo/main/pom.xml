@@ -31,10 +31,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.8</version>
 			<scope>provided</scope>
+=======
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.16.18</version>
+>>>>>>> 166871afd1c051a4bd228e70b1f28ac27ce72e96
 		</dependency>
 	</dependencies>
 </project>
