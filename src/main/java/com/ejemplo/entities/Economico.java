@@ -1,8 +1,7 @@
 package com.ejemplo.entities;
 
-import lombok.Data;
 
-public @Data class Economico extends Coche{
+public class Economico extends Coche{
 
 	@Override
 	public void movimiento() {
