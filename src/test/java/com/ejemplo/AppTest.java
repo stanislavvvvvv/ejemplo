@@ -91,6 +91,7 @@ public class AppTest
     	coche2.setPuertas(3);
     	coche2.setTraccion("delantera");
     	System.out.println(coche.equals(coche2));
-    	assertThat(coche).isEqualTo(coche2);
+    	//assertThat(coche).isEqualTo(coche2);
+    	assertThat(coche).isEqualToComparingFieldByField(coche2);
     }
 }
