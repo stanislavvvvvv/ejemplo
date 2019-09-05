@@ -1,0 +1,93 @@
+8:40 04/09/2019comand handler y sus deiferencias con los servicos -
+cqrs -
+scrum y mirar como sacar certificado
+ddd mirarlo por encima no super profundo.
+Kafka.
+
+
+
+lombok project
+
+docker imagen de firefox
+
+
+Ejemplo maven para probar encasulamiento, polimorfismo y herencia
+mirar el ciclo de vida de maven
+y leer sobre solid, dry y jenkins
+
+
+
+
+
+Polimorfismo:
+	-Una clase abstracta son las calsaes que no se pueden instanciar es decir que nunca se podra usar new clase().
+	-Un metodo abstracto no se implementa en la clase abstracta pero si en sus hijas y al ser abstracto esto obliga a la clase hija
+	a tener implementado ese metodo.
+Por lo tanto podemos determinar que plimorfismo significa muchas cosas esto quiere decir que una clase puede adoptar diferentes formas
+	-@override sirve para indicar que un metodo que se encunetra en la clase padre y que queremos redefinir en la clase hija
+
+Encapsulamiento:
+Esto s eutiliza en la programacion orientada a objetos para proteger las variables de nuestras clases por ejemplo si tenemos una variable
+tipo y la tenemos publica podemos acceder a ellas sin problema y no hay control del dato que le podamos introducir a esa variable. Para
+realizar el encapsulamiento podemos hacerla privada y crear metodos para introducirle valor a esa variable de esa forma podemos controlar 
+el valor que le introducmos a esa variable.
+
+Cliclo de vida de maven:
+Hay tres ciclos de vida de compilacion integrados: defauilt ciclo que maneja la implementacion de su proyecto, clean maneja la limppieza del
+proyecto y site que maneja la creacion de documentacion del sitio del proyecto.
+Las fases que componen es cliclo de vida default son:
+-validate: validar que el poryecto es correcto y toda la informaicon esta disponible.
+-compile: compilar el codigo fuente dle poryecto.
+-test: prueba el codigo fuente compilado utilizando un marco de prueba de unidad adecuado.
+-package: toma el codigo compilado y lo transforma a un JAR
+-verify: ejecuta cualquier verificacion de los resultados de prueba de integracion para garantizar que se cumplan los criterios de calidad.
+-install: instale el paquete en el repositorio local, para usarlos como dependencia de otros poryectos localmente.
+-deploy: hecho en el enterno de compilacion, copia el paquete final en el repositorio remoto para compartirlo con otros desarroladeres.
+
+Solid los cinco  principios basicos de POO:
+
+-Single responsibility: Este principio trata de destinar a cada clase una finalidad sencilla y concreta. Intentando evitar que una clase tenga
+metodos que no debe de tener por qu eno es su funcionalidad. 
+-Abierto/Cerrado: Habla de crear clases extensibles sin necesidad de entrar al codigo fuente a modificarlo. Es decir, el diseño debe ser
+abierto para poder extender pero cerrado para poderse modificar. El uso mas comun de extension es mediante la herencia y la implementacion
+de metodos es una de las formas.
+-Sustitucion Liskov: Habla de la importancia de crear todas las clases derivadas para que tambien puedan ser tratadas como la propia clase
+base.
+-Segregacion de interface: Cuando se definen interfaces estos deben ser especificos a una finalidad concleta. es mejor tener muchas interfaces
+con pocos metodos a una con muchos. el objetivo de este principio es reaprovechar los interfeces en otras clases.
+-inversion de dependencias: el objetivo de este principio es conseguir desacoplar las clases. Un sistema no acoplado no hace nada pero
+uno altamamente acoplado es muy dificil de mantener.
+
+03/09/2019
+la ley de demeter
+instalar longbog ?¿??¿
+que es un arquetipo y como usarlo en maven eclipse? descargar artifactory para crear artefactos y usarlos.
+crear un plugins de maven y utilzarlo.Por ejemplo un hola mundo.
+ver mockito, junit y assert j e ir probandolos.
+mirar la piramide de test de mickel ---
+
+Dos objetos coche que se comparen con assert
+Tengo una 2 lista de coches y que con assert compruebe que los elementos  de la lista son iguales.
+
+
+
+04/09/2019
+
+cohesión y acoplamiento.
+arqueotipos.
+intentar hacer los test sin el hascode
+ver tambien que son los test dobles.
+
+cohesion:
+la cohesion mide la fuera de la relacion entre las piezas de funcionalidad dentro de  un modulo dado.
+Es un tipo de medicion ordinal. Se preferie siempre la alta cohesion debido a varios rasfos deseavles del software con los que se realciona como la robustez, la fiaiblidad, la reutilizacion y el
+grado de compresion. sin embargo si es baja es dificil de mantener probar y volver a utilizar incluso de entender.
+
+Acoplamiento:
+Es la forma y nivel de interdependencia entre modulos de software; una medida de que tan cercanamente conectados estan dos rutinas o modulos de software asi como el grado de fuerza de la relacion
+entre modilos.
+El bajo acoplamiento quiere decir que mientras menos dependiente sean las partes que constituyen un sistema informatico, mejor sera el resultado. Sin embarog, es imposible un desacoplamiento
+total de las unidades.
+mejora el mantenimiento mayor reutilizacion evitar el efecto de propagacion de errores y no tneer que cambiar tantas unidades software.
+
+
