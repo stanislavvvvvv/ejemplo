@@ -8,10 +8,11 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 public abstract class Coche {
-	protected @Getter @Setter Integer caballos;
-	protected @Getter @Setter Integer puertas;
-	protected @Getter @Setter String traccion;
+	protected  Integer caballos;
+	protected Integer puertas;
+	protected String traccion;
 	
 	// Encapsulate
 	protected abstract void pitar();
