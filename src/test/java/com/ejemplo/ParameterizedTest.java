@@ -29,33 +29,28 @@ public class ParameterizedTest {
 
     @Parameters(name = "{index}: {0} = {1}")
     public static Collection<Object[]> data() {
-    	Coche cochet = new Economico();
-    	cochet.setCaballos(150);
-    	cochet.setPuertas(3);
-    	cochet.setTraccion("delantera");
-    	Coche cochet2 = new Economico();
-    	cochet2.setCaballos(150);
-    	cochet2.setPuertas(3);
-    	cochet2.setTraccion("delantera");
-    	
-    	Coche cochett = new Economico();
-    	cochett.setCaballos(150);
-    	cochett.setPuertas(3);
-    	cochett.setTraccion("delantera");
-    	Coche cochett2 = new Economico();
-    	cochett2.setCaballos(150);
-    	cochett2.setPuertas(3);
-    	cochett2.setTraccion("delantera");
-        return Arrays.asList(new Object[][]{
-                {cochet, cochet2},
-                {cochett, cochett2}
+        Coche coche1 = cocheNuevo();
+        Coche coche2 = cocheNuevo();
+        Coche coche3 = cocheNuevo();
+        Coche coche4 = cocheNuevo();
+        return Arrays.asList(new Object[][] {
+                { coche1, coche2 },
+                { coche3, coche4 }
         });
     }
 
     @Test
-    public void test_addTwoNumbes() {
-    	assertThat(coche1).isEqualToComparingFieldByField(coche2);
-        
+    public void cochesIgualesTest() {
+        assertThat(coche1).isEqualToComparingFieldByField(coche2);
+
+    }
+
+    private static Coche cocheNuevo() {
+        Coche coche = new Economico();
+        coche.setCaballos(150);
+        coche.setPuertas(3);
+        coche.setTraccion("delantera");
+        return coche;
     }
 
 }
