@@ -46,8 +46,8 @@ public class AppTest
     //comparar dos coche con los mismo parametros assertj
     //lista de coche a ver si son iguales assertj
     public void testLista() {
-    	ArrayList<Coche> coches = new ArrayList<Coche>();
     	ArrayList<Coche> coches2 = new ArrayList<Coche>();
+    	ArrayList<Coche> coches = new ArrayList<Coche>();
     	Coche coche = new Economico();
     	coche.setCaballos(150);
     	coche.setPuertas(3);
@@ -56,11 +56,19 @@ public class AppTest
     	coch2e.setCaballos(150);
     	coch2e.setPuertas(3);
     	coch2e.setTraccion("cuatroxcuatro");
+    	Coche coch3e = new Todoterreno();
+    	coch2e.setCaballos(150);
+    	coch2e.setPuertas(3);
+    	coch2e.setTraccion("cuatroxcuatro");
+    	Coche coch4e = new Todoterreno();
+    	coch2e.setCaballos(150);
+    	coch2e.setPuertas(3);
+    	coch2e.setTraccion("cuatroxcuatro");
     	
     	coches.add(coche);
     	coches.add(coch2e);
-    	coches2.add(coche);
-    	coches2.add(coch2e);
+    	coches2.add(coch3e);
+    	coches2.add(coch4e);
     	assertThat(coches).isEqualTo(coches2);
     }
     
@@ -82,6 +90,7 @@ public class AppTest
     	coche2.setCaballos(150);
     	coche2.setPuertas(3);
     	coche2.setTraccion("delantera");
+    	System.out.println(coche.equals(coche2));
     	assertThat(coche).isEqualTo(coche2);
     }
 }
