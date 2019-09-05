@@ -80,7 +80,7 @@ ver tambien que son los test dobles.
 
 cohesion:
 la cohesion mide la fuera de la relacion entre las piezas de funcionalidad dentro de  un modulo dado.
-Es un tipo de medicion ordinal. Se preferie siempre la alta cohesion debido a varios rasfos deseavles del software con los que se realciona como la robustez, la fiaiblidad, la reutilizacion y el
+Es un tipo de medicion ordinal. Se preferie siempre la alta cohesion debido a varios rasgos deseables del software con los que se realciona como la robustez, la fiaiblidad, la reutilizacion y el
 grado de compresion. sin embargo si es baja es dificil de mantener probar y volver a utilizar incluso de entender.
 
 Acoplamiento:
@@ -90,4 +90,10 @@ El bajo acoplamiento quiere decir que mientras menos dependiente sean las partes
 total de las unidades.
 mejora el mantenimiento mayor reutilizacion evitar el efecto de propagacion de errores y no tneer que cambiar tantas unidades software.
 
+05/09/2019
 
+hacer un ejemplo con los parametrizer.
+dentro de coche vamos a crear un metodo que lance un exceppcion echa por nosotros.
+luego hacer test para comprobar que es una excepcion y el mensaje es el que nosotros le pasamos.
+hacer un mock con mockito de un coche y verificar que pitar que llama a otro metodo y  comprobar con mockitp que se ha llamado a ese metodo
+hacer tablita de los test doubles
