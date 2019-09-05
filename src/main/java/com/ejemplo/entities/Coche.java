@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class Coche {
+public @Data abstract class Coche {
 	protected Integer caballos;
 	protected Integer puertas;
 	protected String traccion;

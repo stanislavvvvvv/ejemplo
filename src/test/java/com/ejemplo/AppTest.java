@@ -57,19 +57,20 @@ public class AppTest
     	coch2e.setPuertas(3);
     	coch2e.setTraccion("cuatroxcuatro");
     	Coche coch3e = new Todoterreno();
-    	coch2e.setCaballos(150);
-    	coch2e.setPuertas(3);
-    	coch2e.setTraccion("cuatroxcuatro");
+    	coch3e.setCaballos(150);
+    	coch3e.setPuertas(3);
+    	coch3e.setTraccion("cuatroxcuatro");
     	Coche coch4e = new Todoterreno();
-    	coch2e.setCaballos(150);
-    	coch2e.setPuertas(3);
-    	coch2e.setTraccion("cuatroxcuatro");
+    	coch4e.setCaballos(150);
+    	coch4e.setPuertas(3);
+    	coch4e.setTraccion("cuatroxcuatro");
     	
     	coches.add(coche);
     	coches.add(coch2e);
     	coches2.add(coch3e);
     	coches2.add(coch4e);
-    	assertThat(coches).isEqualTo(coches2);
+    	//assertThat(coches).isEqualTo(coches2);
+    	assertThat(coches).usingRecursiveFieldByFieldElementComparator().containsAll(coches2);
     }
     
     
