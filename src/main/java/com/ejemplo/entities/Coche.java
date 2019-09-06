@@ -16,10 +16,16 @@ public abstract class Coche {
     protected String traccion;
     protected Bocina bocina;
 
-    // Encapsulate
-    public void pitar() {
+    public void pitar() throws MiExcepcion {
         bocina.pitar();
+        throw new MiExcepcion("PITA DESDE LA EXCEPCION");
     }
 
     protected abstract void movimiento();
+
+    public class MiExcepcion extends Exception {
+        public MiExcepcion(String mierror) {
+            super(mierror);
+        }
+    }
 }

@@ -89,7 +89,7 @@ public class AppTest
         return coche;
     }
 
-    public void testBocina() {
+    public void testBocina() throws Coche.MiExcepcion {
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
