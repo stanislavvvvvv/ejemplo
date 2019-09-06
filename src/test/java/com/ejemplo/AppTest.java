@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.ejemplo.entities.Bocina;
 import com.ejemplo.entities.Coche;
+import com.ejemplo.entities.Coche.MiExcepcion;
 import com.ejemplo.entities.Economico;
 import com.ejemplo.entities.Todoterreno;
 
@@ -89,15 +90,28 @@ public class AppTest
         return coche;
     }
 
-    public void testBocina() throws Coche.MiExcepcion {
+    public void testBocina() throws Coche.MiExcepcion{
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
-        coche.pitar();
-        coche.pitar();
-        coche.pitar();
-        coche.pitar();
+        coche.pitar("no error");
+        coche.pitar("no error");
+        coche.pitar("no error");
+        coche.pitar("no error");
         verify(bocina, times(4)).pitar();
+    }
+    public void testException() throws Coche.MiExcepcion{
+    	Coche coche = cocheNuevo();
+    	boolean thrown = false;
+        Bocina bocina = mock(Bocina.class);
+        coche.setBocina(bocina);
+        try {
+        	coche.pitar("error");
+        }catch (MiExcepcion e) {
+        	
+        	assertThat("PITA DESDE LA EXCEPCION").isEqualTo(e.getMessage());
+        }
+        
     }
 
 }
