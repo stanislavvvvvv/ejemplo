@@ -97,3 +97,32 @@ dentro de coche vamos a crear un metodo que lance un exceppcion echa por nosotro
 luego hacer test para comprobar que es una excepcion y el mensaje es el que nosotros le pasamos.
 hacer un mock con mockito de un coche y verificar que pitar que llama a otro metodo y  comprobar con mockitp que se ha llamado a ese metodo
 hacer tablita de los test doubles
+
+
+06/09/2019
+
+Test doubles:
+Dummy: es algo que se utiliza para satisfacer las dependencias, su uso en ejecucion es completamente irrelevante.
+Un dummy no deberia usarse en ejecucion.
+
+Stub: El proposito de un stub es el de proveer valores concretos para guiar al test en una determianda direccion. si
+queremos probar una parte del sistema a carfo de usuarios no autorizados podemos hacer que el stub devuelva false.
+
+spy:Cuando quieres asegurarte de haber llamado a un metodo en tu sistema puedes utilizar un espia. Comprobarlo es tan 
+sencillo como preguntarle a nuestro espia si el metodo ha sido llamda. Hay que tener cuidado por que esto se paga
+en forma de acoplamiento.
+
+Mock: Conoce lo que se esta testeando. un mock esta mas interesado en que metodos se han incodado con que argumentos
+cuando y con que freciencia. Un mock siempre es un espia.
+
+Fake: Un fake se puede hacer por ejemplo a la hora de un login solo dar acceso a los usuarios bob entonces cada vez
+que introduces bob devuelve un true sino sera falso. Es algo parecido a un dummy. contiene cierto tipo de logica y
+puede complicarse hasta el punto de llegar a necesitar test
+
+utilizar junit params
+hacer un spy con mockito 
+crear otro metodo que desde bocina regrese un entero(desde coche llamamos a ese metodo) cuando yo llame al bocina sonido devuelva el 20 que hemos defincido en la prueba, diferencia entre mock y spy
+con este metodo probarlo.
+un rule de junit que es para que sirve y ejemplo.
+when y doreturnwhen diferencias ?¿
+

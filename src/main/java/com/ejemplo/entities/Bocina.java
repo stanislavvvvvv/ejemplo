@@ -15,4 +15,7 @@ public class Bocina {
     public String sonido(){
         return sonido;
     }
+    public int devuelveSonido() {
+    	return 20;
+    }
 }

@@ -32,6 +32,10 @@ public abstract class Coche {
         return "pip";
         
     }
+    public void cuantoSonido() {
+    	int sonido;
+    	sonido = bocina.devuelveSonido();
+    }
 
     protected abstract void movimiento();
 

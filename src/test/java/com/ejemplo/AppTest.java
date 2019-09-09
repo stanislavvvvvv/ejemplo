@@ -6,6 +6,9 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+
 import com.ejemplo.entities.Bocina;
 import com.ejemplo.entities.Coche;
 import com.ejemplo.entities.Coche.MiExcepcion;
@@ -15,10 +18,14 @@ import com.ejemplo.entities.Todoterreno;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+<<<<<<< HEAD
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+=======
+import junitparams.JUnitParamsRunner;
+>>>>>>> development
 
 /**
  * Unit test for simple App.
@@ -95,7 +102,27 @@ public class AppTest
         return coche;
     }
 
+<<<<<<< HEAD
     public void testBocina() throws Coche.MiExcepcion {
+=======
+    public void testSpyBocina() throws Coche.MiExcepcion{
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        verify(spybocina, times(1)).pitar();
+    }
+    public void testSpyBocinaDevuelveEntero() throws Coche.MiExcepcion{
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        assertEquals(20, spybocina.devuelveSonido());
+    }
+    public void testBocina() throws Coche.MiExcepcion{
+>>>>>>> development
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
@@ -108,10 +135,15 @@ public class AppTest
         assertThat(bocina.pitar()).isEqualTo("cualquier");
 
     }
+<<<<<<< HEAD
 
     public void testException() throws Coche.MiExcepcion {
         Coche coche = cocheNuevo();
         boolean thrown = false;
+=======
+    public void testException() throws Coche.MiExcepcion{
+    	Coche coche = cocheNuevo();
+>>>>>>> development
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
         try {
