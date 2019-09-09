@@ -125,4 +125,12 @@ crear otro metodo que desde bocina regrese un entero(desde coche llamamos a ese 
 con este metodo probarlo.
 un rule de junit que es para que sirve y ejemplo.
 when y doreturnwhen diferencias ?¿
+Crear un json del que tire para crear coches
 
+Spy vs mock 
+La diferencia mas grande es que con mock se crea un objeto simulado donde sus metodos no son reales son una
+simple simulaicon mientras que con spy existe el objeto real y simplemente esta espiando que realizan los metodos
+de dicho objeto
+
+when then return llama al metodo real mientras que do Return when no tiene por que llamar al metodo del todo
+por lo que no lo llama realmente.
