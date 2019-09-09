@@ -23,6 +23,10 @@ public abstract class Coche {
         }
         
     }
+    public void cuantoSonido() {
+    	int sonido;
+    	sonido = bocina.devuelveSonido();
+    }
 
     protected abstract void movimiento();
 

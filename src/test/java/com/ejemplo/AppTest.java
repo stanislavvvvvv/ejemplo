@@ -5,6 +5,8 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
+import org.mockito.Mockito;
+
 import com.ejemplo.entities.Bocina;
 import com.ejemplo.entities.Coche;
 import com.ejemplo.entities.Coche.MiExcepcion;
@@ -90,6 +92,22 @@ public class AppTest
         return coche;
     }
 
+    public void testSpyBocina() throws Coche.MiExcepcion{
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        verify(spybocina, times(1)).pitar();
+    }
+    public void testSpyBocinaDevuelveEntero() throws Coche.MiExcepcion{
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        assertEquals(20, spybocina.devuelveSonido());
+    }
     public void testBocina() throws Coche.MiExcepcion{
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
@@ -102,7 +120,6 @@ public class AppTest
     }
     public void testException() throws Coche.MiExcepcion{
     	Coche coche = cocheNuevo();
-    	boolean thrown = false;
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
         try {

@@ -11,4 +11,7 @@ public class Bocina {
     public void pitar() {
         System.out.println("aaaaaaaaaaAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAA");
     }
+    public int devuelveSonido() {
+    	return 20;
+    }
 }
