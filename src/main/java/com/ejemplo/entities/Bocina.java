@@ -7,8 +7,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 public class Bocina {
+    private String sonido;
 
-    public void pitar() {
-        System.out.println("aaaaaaaaaaAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAA");
+    public String pitar() {
+        return "aaaaaaaaaaAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAA";
+    }
+    public String sonido(){
+        return sonido;
     }
 }

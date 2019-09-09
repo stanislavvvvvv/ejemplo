@@ -1,6 +1,7 @@
 package com.ejemplo;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -14,6 +15,10 @@ import com.ejemplo.entities.Todoterreno;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 /**
  * Unit test for simple App.
@@ -90,7 +95,7 @@ public class AppTest
         return coche;
     }
 
-    public void testBocina() throws Coche.MiExcepcion{
+    public void testBocina() throws Coche.MiExcepcion {
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
@@ -99,19 +104,40 @@ public class AppTest
         coche.pitar("no error");
         coche.pitar("no error");
         verify(bocina, times(4)).pitar();
+        when(bocina.pitar()).thenReturn("cualquier");
+        assertThat(bocina.pitar()).isEqualTo("cualquier");
+
     }
-    public void testException() throws Coche.MiExcepcion{
-    	Coche coche = cocheNuevo();
-    	boolean thrown = false;
+
+    public void testException() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+        boolean thrown = false;
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
         try {
-        	coche.pitar("error");
-        }catch (MiExcepcion e) {
-        	
-        	assertThat("PITA DESDE LA EXCEPCION").isEqualTo(e.getMessage());
+            coche.pitar("error");
+        } catch (MiExcepcion e) {
+
+            assertThat("PITA DESDE LA EXCEPCION").isEqualTo(e.getMessage());
         }
-        
+
+    }
+    @Rule
+    public  ExpectedException thrownn = ExpectedException.none();
+    //thrownn.expect(MiExcepcion.Class)
+    //coche.throw exception
+
+
+    public void testAssertException() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+        Bocina bocina = mock(Bocina.class);
+        coche.setBocina(bocina);
+        Throwable thrown = catchThrowable(()->{
+            coche.pitar("error");
+        });
+        //withStackTraceContaining
+        assertThat(thrown).isInstanceOf(Coche.MiExcepcion.class).hasNoCause();
+
     }
 
 }
