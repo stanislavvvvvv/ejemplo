@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.ejemplo.entities.Bocina;
@@ -16,6 +17,7 @@ import com.ejemplo.entities.Todoterreno;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import junitparams.JUnitParamsRunner;
 
 /**
  * Unit test for simple App.
