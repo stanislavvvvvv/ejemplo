@@ -1,34 +1,32 @@
 package com.ejemplo;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-
-import com.ejemplo.entities.Bocina;
-import com.ejemplo.entities.Coche;
+import com.ejemplo.entities.*;
 import com.ejemplo.entities.Coche.MiExcepcion;
-import com.ejemplo.entities.Economico;
-import com.ejemplo.entities.Todoterreno;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.Mockito.*;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest
         extends TestCase {
+    @Rule
+    public final PrintOutRule regla = new PrintOutRule();
+
     /**
      * Create the test case
      *
@@ -99,65 +97,85 @@ public class AppTest
         return coche;
     }
 
-	public void testSpyBocina() throws Coche.MiExcepcion{
-	    Coche coche = cocheNuevo();
-	    Bocina bocina = new Bocina();
-	    Bocina spybocina = Mockito.spy(bocina);
-	    coche.setBocina(spybocina);
-	    coche.pitar("no error");
-	    verify(spybocina, times(1)).pitar();
-	}
-	public void testSpyBocinaDevuelveEntero() throws Coche.MiExcepcion{
-	    Coche coche = cocheNuevo();
-	    Bocina bocina = new Bocina();
-	    Bocina spybocina = Mockito.spy(bocina);
-	    coche.setBocina(spybocina);
-	    coche.pitar("no error");
-	    assertEquals(20, spybocina.devuelveSonido());
-	}
-	public void testBocina() throws Coche.MiExcepcion{
-	    Coche coche = cocheNuevo();
-	    Bocina bocina = mock(Bocina.class);
-	    coche.setBocina(bocina);
-	    coche.pitar("no error");
-	    coche.pitar("no error");
-	    coche.pitar("no error");
-	    coche.pitar("no error");
-	    verify(bocina, times(4)).pitar();
-	    when(bocina.pitar()).thenReturn("cualquier");
-	    assertThat(bocina.pitar()).isEqualTo("cualquier");
-	
-	}
-	
-	
-	public void testException() throws Coche.MiExcepcion{
-		Coche coche = cocheNuevo();
-	
-	    Bocina bocina = mock(Bocina.class);
-	    coche.setBocina(bocina);
-	    try {
-	        coche.pitar("error");
-	    } catch (MiExcepcion e) {
-	
-	        assertThat("PITA DESDE LA EXCEPCION").isEqualTo(e.getMessage());
-	    }
-	
-	}
-    @Rule
-    public  ExpectedException thrownn = ExpectedException.none();
-    //thrownn.expect(MiExcepcion.Class)
-    //coche.throw exception
+    public void testSpyBocina() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        verify(spybocina, times(1)).pitar();
+    }
 
+    public void testSpyBocinaDevuelveEntero() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+        Bocina bocina = new Bocina();
+        Bocina spybocina = Mockito.spy(bocina);
+        coche.setBocina(spybocina);
+        coche.pitar("no error");
+        assertEquals(20, spybocina.devuelveSonido());
+    }
+
+    public void testBocina() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+        Bocina bocina = mock(Bocina.class);
+        coche.setBocina(bocina);
+        coche.pitar("no error");
+        coche.pitar("no error");
+        coche.pitar("no error");
+        coche.pitar("no error");
+        verify(bocina, times(4)).pitar();
+        when(bocina.pitar()).thenReturn("cualquier");
+        assertThat(bocina.pitar()).isEqualTo("cualquier");
+
+    }
+
+    public void testException() throws Coche.MiExcepcion {
+        Coche coche = cocheNuevo();
+
+        Bocina bocina = mock(Bocina.class);
+        coche.setBocina(bocina);
+        try {
+            coche.pitar("error");
+        } catch (MiExcepcion e) {
+
+            assertThat("PITA DESDE LA EXCEPCION").isEqualTo(e.getMessage());
+        }
+
+    }
 
     public void testAssertException() throws Coche.MiExcepcion {
         Coche coche = cocheNuevo();
         Bocina bocina = mock(Bocina.class);
         coche.setBocina(bocina);
-        Throwable thrown = catchThrowable(()->{
+        Throwable thrown = catchThrowable(() -> {
             coche.pitar("error");
         });
         //withStackTraceContaining
-        assertThat(thrown).isInstanceOf(Coche.MiExcepcion.class).hasNoCause();
+        // comprobar mensajes de excepciones
+        assertThat(thrown).isInstanceOf(Coche.MiExcepcion.class);
+
+    }
+    @org.junit.Test
+    public void testJsonObject() throws IOException {
+        ArrayList<Coche> coches = new ArrayList<Coche>();
+        coches.add(cocheNuevo());
+        coches.add(cocheNuevo());
+        coches.add(cocheNuevo());
+
+        String directory = System.getProperty("user.home");
+        String fileName = "coches.bin";
+        String absolutePath = directory + File.separator + fileName;
+
+        ObjectMapper mapper = new ObjectMapper();
+        File fichero = new File(absolutePath);
+
+        mapper.registerSubtypes(Economico.class, Sedan.class, Todoterreno.class);
+        mapper.writeValue(fichero, coches);
+
+        List<Coche> o = mapper.readValue(fichero, new TypeReference<List<Coche>>() {
+        });
+
+        assertThat(coches).usingRecursiveFieldByFieldElementComparator().containsAll(o);
 
     }
 

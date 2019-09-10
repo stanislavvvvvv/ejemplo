@@ -32,6 +32,7 @@ public class JunitParams {
             new Object[] { coche1, coche2, coche3 }
         };
     }
+
     private static Coche cocheNuevo() {
         Coche coche = new Economico();
         coche.setCaballos(150);

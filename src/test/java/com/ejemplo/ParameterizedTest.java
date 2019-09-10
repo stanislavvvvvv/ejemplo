@@ -1,5 +1,6 @@
 package com.ejemplo;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,6 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedTest {
+    @Rule
+    public final PrintOutRule regla = new PrintOutRule();
 
     //default value = 0
     @Parameter(value = 0)
